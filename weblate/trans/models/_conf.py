@@ -56,6 +56,8 @@ class WeblateConf(AppConf):
         "weblate.trans.autofixes.chars.DevanagariDanda",
         "weblate.trans.autofixes.chars.PunctuationSpacing",
         "weblate.trans.autofixes.html.BleachHTML",
+        "weblate.trans.autofixes.customized.JapaneseCharacterFix",
+        "weblate.trans.autofixes.customized.FullWidthSpaceFix",
     )
 
     # Matomo, formerly known as Piwik

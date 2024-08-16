@@ -138,6 +138,7 @@ class FormatsConf(AppConf):
         "weblate.formats.ttkit.StringsdictFormat",
         "weblate.formats.ttkit.FluentFormat",
         "weblate.formats.multi.MultiCSVUtf8Format",
+        "weblate.formats.customized.ParaTranzJsonFormat",
     )
 
     class Meta:
