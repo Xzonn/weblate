@@ -1834,6 +1834,9 @@ a.language:hover {
 .markdown p:last-child {
   margin-bottom: 0;
 }
+.markdown img {
+  max-width: 100%;
+}
 .metric {
   text-align: center;
   padding: 20px 0;

@@ -326,7 +326,7 @@ class MarkdownFormat(ConvertFormat):
         from translate.convert.po2md import MarkdownTranslator
 
         converter = MarkdownTranslator(
-            inputstore=self.store, includefuzzy=True, outputthreshold=None, maxlength=80
+            inputstore=self.store, includefuzzy=True, outputthreshold=None, maxlength=999999
         )
         templatename = self.template_store.storefile
         if hasattr(templatename, "name"):

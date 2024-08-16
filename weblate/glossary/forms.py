@@ -63,7 +63,7 @@ class TermForm(NewBilingualGlossaryUnitForm, forms.ModelForm):
         exclude = [
             glossary.pk
             for glossary in self.glossaries
-            if not user.has_perm("unit.add", glossary)
+            if not user.has_perm("glossary.add", glossary)
         ]
         if exclude:
             self.glossaries = self.glossaries.exclude(pk__in=exclude)
