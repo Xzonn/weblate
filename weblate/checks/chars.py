@@ -184,6 +184,14 @@ class EndStopCheck(TargetCheck):
         # Allow ... to be translated into ellipsis
         if source.endswith("...") and target[-1] == "…":
             return False
+
+        if target[-1] in {"。", "？"} and source[-1] in {"。", "？"}:
+            return False
+        if target[-1] == "。" and target[-2] in {"…", "～", "—", "ー", "―"}:
+            target = target[:-1]
+        if source[-1] == "。" and source[-2] in {"…", "～", "—", "ー", "―"}:
+            source = source[:-1]
+
         if unit.translation.language.is_base(("ja",)) and source[-1] in {":", ";"}:
             # Japanese sentence might need to end with full stop
             # in case it's used before list.
@@ -278,6 +286,9 @@ class EndQuestionCheck(TargetCheck):
         if unit.translation.language.is_base(("my",)):
             return self._check_my(source, target)
 
+        if target[-1] in {"。", "？"} and source[-1] in {"。", "？"}:
+            return False
+
         return self.check_chars(
             source, target, -1, {"?", "՞", "؟", "⸮", "？", "፧", "꘏", "⳺"}
         )
@@ -346,6 +357,15 @@ class EndEllipsisCheck(TargetCheck):
         # Allow ... to be translated into ellipsis
         if source.endswith("...") and target[-1] == "…":
             return False
+
+        if target.endswith("…。"):
+            target = target[:-1]
+        if source.endswith("…。"):
+            source = source[:-1]
+
+        if source.endswith("——……") and target.endswith("——"):
+            return False
+
         return self.check_chars(source, target, -1, {"…"})
 
 

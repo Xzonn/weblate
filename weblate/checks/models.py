@@ -112,6 +112,11 @@ class WeblateChecksConf(AppConf):
         "weblate.checks.fluent.references.FluentReferencesCheck",
         "weblate.checks.fluent.inner_html.FluentSourceInnerHTMLCheck",
         "weblate.checks.fluent.inner_html.FluentTargetInnerHTMLCheck",
+        "weblate.checks.customized.AngleBracketCheck",
+        "weblate.checks.customized.EllipsisEndStopCheck",
+        "weblate.checks.customized.WrongEllipsisCheck",
+        "weblate.checks.customized.DobuleLeftQuotationCheck",
+        "weblate.checks.customized.FullWidthSpaceCheck",
     )
 
     class Meta:
