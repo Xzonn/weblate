@@ -45,7 +45,7 @@ class WeblateLock:
             self._name = self._format_template(cache_template)
             self._lock = cast(RedisCache, cache).lock(
                 key=self._name,
-                expire=3600,
+                expire=30,
                 auto_renewal=True,
             )
             self._enter_implementation = self._enter_redis
