@@ -65,6 +65,7 @@ class ParaTranzJsonFile(JsonFile):
     def _extract_units(
         self,
         data: list[dict[str, str]],
+        **args,
     ):
         for index, item in enumerate(data):
             unit = self.UnitClass(
