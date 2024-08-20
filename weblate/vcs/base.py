@@ -204,7 +204,7 @@ class Repository:
                 input=stdin,
                 stdin=subprocess.PIPE if stdin is None else None,
                 # Excessively long timeout to catch misbehaving processes
-                timeout=3600,
+                timeout=60,
             )
         except subprocess.TimeoutExpired as error:
             raise RepositoryError(
