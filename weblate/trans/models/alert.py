@@ -603,6 +603,7 @@ class NoMaskMatches(BaseAlert):
 
     @staticmethod
     def check_component(component: Component) -> bool | None | dict:
+        return False
         return (
             not component.is_glossary
             and component.translation_set.count() <= 1
