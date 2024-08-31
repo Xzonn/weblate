@@ -68,6 +68,8 @@ class ParaTranzJsonFile(JsonFile):
         **args,
     ):
         for index, item in enumerate(data):
+            if item.get("trash", False):
+                continue
             unit = self.UnitClass(
                 index,
                 item.get("key"),
