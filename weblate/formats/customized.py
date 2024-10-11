@@ -34,17 +34,20 @@ class ParaTranzJsonUnit(TranslationUnit):
     def storevalues(self, output):
         value = {
             "translation": self.target,
-            "context": self.notes,
         }
+        if self.notes:
+            value["context"] = self.notes
         output[self.index].update(value)
 
     def getvalue(self):
-        return {
+        value = {
             "key": self._id,
             "source": self.source,
             "translation": self.target,
-            "context": self.notes,
         }
+        if self.notes:
+            value["context"] = self.notes
+        return value
 
     def getlocations(self):
         return [self.getid()]
