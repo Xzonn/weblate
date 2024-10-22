@@ -771,7 +771,9 @@ def naturaltime(value, now=None):
     if isinstance(value, datetime):
         value = value.replace(microsecond=0)
 
-    return format_html('<span title="{}">{}</span>', value.isoformat(), text)
+    return format_html(
+        '<span title="{}">{}</span>', value.astimezone().isoformat(), text
+    )
 
 
 def get_stats(obj):
@@ -1193,6 +1195,9 @@ def indicate_alerts(
 
 @register.filter(is_safe=True)
 def markdown(text):
+    if "机翻辅助：" in text:
+        text = text.replace("机翻辅助：", "**机翻辅助：**")
+
     return format_html('<div class="markdown">{}</div>', render_markdown(text))
 
 
@@ -1304,9 +1309,19 @@ def any_unit_has_context(units: Iterable[Unit]):
 
 
 @register.filter(is_safe=True, needs_autoescape=True)
+def note_badge(value, autoescape=True):
+    value = (value or "").split("\n")[0]
+    if "：" in value:
+        return ""
+    return value
+
+@register.filter(is_safe=True, needs_autoescape=True)
 def urlize_ugc(value, autoescape=True):
     """Convert URLs in plain text into clickable links."""
-    html = urlize(value, nofollow=True, autoescape=autoescape)
+    value = (value or "").replace("\n", "<br>")
+    value = re.sub(r"\*\*([^\*]+)\*\*", r"<b>\1</b>", value)
+
+    html = urlize(value, nofollow=True, autoescape=False)
     return mark_safe(  # noqa: S308
         html.replace('rel="nofollow"', 'rel="ugc" target="_blank"')
     )

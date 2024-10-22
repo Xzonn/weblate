@@ -642,7 +642,7 @@
     <h5>
     {% trans "Source string description" %}
     </h5>
-    {{ unit.note|urlize_ugc }}
+    {{ unit.note|markdown }}
     </div>
     {% endif %}
     {% if unit.all_labels or user_can_edit_source %}

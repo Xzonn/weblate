@@ -371,7 +371,7 @@ class GitRepository(Repository):
         if author:
             cmd.extend(["--author", author])
         if timestamp is not None:
-            cmd.extend(["--date", timestamp.isoformat()])
+            cmd.extend(["--date", timestamp.astimezone().isoformat()])
         cmd.extend(self.get_gpg_sign_args())
 
         # Execute it

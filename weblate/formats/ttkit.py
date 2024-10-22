@@ -116,8 +116,8 @@ class TTKitUnit(TranslationUnit):
         if self.template is not None:
             # Avoid duplication in case template has same notes
             template_comment = self.template.getnotes()
-            if template_comment != comment:
-                comment = f"{template_comment}\n{comment}"
+            if template_comment and template_comment != comment:
+                comment = f"{template_comment}\n\n{comment}"
 
         return comment
 
