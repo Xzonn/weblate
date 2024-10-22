@@ -651,6 +651,7 @@ class NoMaskMatches(BaseAlert):
 
     @staticmethod
     def check_component(component: Component) -> bool | dict | None:
+        return False
         return (
             not component.is_glossary
             and component.translation_set.count() <= 1

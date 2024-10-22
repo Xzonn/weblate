@@ -188,9 +188,9 @@ class EndStopCheck(TargetCheck):
 
         if target[-1] in {"。", "？"} and source[-1] in {"。", "？"}:
             return False
-        if target[-1] == "。" and target[-2] in {"…", "～", "—", "ー", "―"}:
+        if target[-1] == "。" and target[-2] in {"…", "～", "—", "ー", "―", "─"}:
             target = target[:-1]
-        if source[-1] == "。" and source[-2] in {"…", "～", "—", "ー", "―"}:
+        if source[-1] == "。" and source[-2] in {"…", "～", "—", "ー", "―", "─"}:
             source = source[:-1]
 
         if unit.translation.language.is_cjk() and source[-1] in {":", ";"}:

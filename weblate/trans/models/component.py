@@ -3216,7 +3216,7 @@ class Component(
         with self.repository.lock:
             self.commit_files(
                 template=self.add_message,
-                author="Weblate <noreply@weblate.org>",
+                author="Xzonn's Weblate <noreply@weblate.org>",
                 extra_context={
                     "translation": Translation(
                         filename=self.template,
@@ -3714,7 +3714,7 @@ class Component(
                     request.user if request else None,
                     request.user.get_author_name()
                     if request
-                    else "Weblate <noreply@weblate.org>",
+                    else "Xzonn's Weblate <noreply@weblate.org>",
                     template=self.add_message,
                     store_hash=False,
                 )

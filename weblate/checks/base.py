@@ -201,6 +201,8 @@ class BaseCheck:
             return etree.tostring(tree, encoding="unicode", method="text")
 
         def noop(content: str) -> str:
+            content = re.sub(r"\[[^\[\]]+\]", "", content)
+            content = re.sub(r"<[^<>]+>", "", content)
             return content
 
         flags = unit.all_flags
